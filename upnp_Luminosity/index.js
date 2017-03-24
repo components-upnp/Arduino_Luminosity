@@ -18,11 +18,11 @@ vm.runInThisContext(fs.readFileSync(__dirname + "/luminosity_device.js"));
 server.listen(PORT);
 
 
-// Create a UPnP Peer. 
-// Create a BinaryLight device as specified in UPnP http://upnp.org/specs/ha/UPnP-ha-BinaryLight-v1-Device.pdf.  
+// Create a UPnP Peer.
+// Create a BinaryLight device as specified in UPnP http://upnp.org/specs/ha/UPnP-ha-BinaryLight-v1-Device.pdf.
 // Please refer for device configuration parameters to the UPnP device architecture.
 var device = createServerPlusDevice(upnp, server, device);
-    
+
 
 // create a SwitchPower service in the BinaryLight device as specified here http://upnp.org/specs/ha/UPnP-ha-SwitchPower-v1-Service.pdf
 var service = createService(device);
@@ -32,8 +32,8 @@ var service = createService(device);
 // When the board is ready
 board.on("ready", function() {
  // Create a new `potentiometer` hardware instance.
-  potentiometer = new five.Sensor({
-    pin: "A2",
+  photoresistor = new five.Sensor({
+    pin: "A0",
     freq: 250
   });
 
@@ -43,12 +43,14 @@ board.on("ready", function() {
   board.repl.inject({
     pot: photoresistor
   });
+	var oldValue = 0;
+	var newValue = 0;
+	var timeOut = true;
 
   // "data" get the current reading from the potentiometer
   photoresistor.on("data", function() {
-  
 
-    //newValue = Math.trunc((this.value * 100)/1023);
+		newValue = Math.trunc((this.value * 100)/1023);
     service.set("Status",newValue);
     service.set("Target",newValue);
 
