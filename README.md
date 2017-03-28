@@ -16,5 +16,7 @@ Ici, lien vers le schéma du circuit:
 https://github.com/components-upnp/Arduino_Luminosity/blob/master/upnp_Luminosity/circuit.png
 
 
+Ce device, lorsque la luminosité change, envoie un string représentant une valeur de 0 à 100. 0 pour une luminosité ambiante maximale et 100 inversement.
+
 Cas d'utilisation du potentiomètre UpNP:
     -Gestion de la luminosité dans une salle.
