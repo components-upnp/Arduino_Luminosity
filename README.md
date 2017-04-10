@@ -12,11 +12,14 @@ INSTALLATION:
     vi - Depuis l'IDE Arduinon, lancer le sketch File > Examples > Firmata > StandardFirmata
     vii - Lancer l'application avec la commande node index.js
     
-Ici, lien vers le schéma du circuit:
-https://github.com/components-upnp/Arduino_Luminosity/blob/master/upnp_Luminosity/circuit.png
+Schéma du circuit:
+
+![alt tag](https://github.com/components-upnp/Arduino_Luminosity/blob/master/upnp_Luminosity/circuit.png)
 
 
-Ce device, lorsque la luminosité change, envoie un string représentant une valeur de 0 à 100. 0 pour une luminosité ambiante maximale et 100 inversement.
+Ce device, lorsque la luminosité change, envoie un string, via la méthode notify de LuminosityService, représentant une valeur de 0 à 100. 0 pour une luminosité ambiante maximale et 100 inversement.
+
+![alt tag](https://github.com/components-upnp/Arduino_Luminosity/blob/master/upnp_Luminosity/arduino_luminosity.png)
 
 Cas d'utilisation du potentiomètre UpNP:
     -Gestion de la luminosité dans une salle.
